@@ -1,0 +1,445 @@
+{
+  "version": "1.0.0",
+  "batch": "1-15",
+  "description": "CADPilot Benchmark Prompts 1-15: Mounting plates, circular flanges, and Phase 5 L-bracket definitions.",
+  "prompts": [
+    {
+      "id": "BM-001",
+      "number": 1,
+      "title": "NEMA 17 Standard Stepper Motor Mount Plate",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 42.3mm NEMA 17 mount plate with 4mm thickness, a 22mm center pilot hole, and 4x M3 holes spaced 31mm apart with 2mm fillets, export to /tmp/bm001_nema17.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 42.3, "height": 42.3, "thickness": 4.0},
+        "bounding_box_mm": [42.3, 42.3, 4.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 22.0, "depth": "through"},
+          {"position_mm": [-15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, 15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-15.5, 15.5], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 5523.55,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Primary NEMA 17 faceplate benchmark. Net box minus 5 holes is 5523.53 mm3 (mock bridge 5523.55 mm3; true Fusion with R2mm corner fillets ~5509.80 mm3)."
+      }
+    },
+    {
+      "id": "BM-002",
+      "number": 2,
+      "title": "Basic Rectangular Base Plate",
+      "part_family": "mounting_plate",
+      "complexity": "simple",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "inspect_brep", "export_cad"],
+      "prompt": "Create a 60mm x 40mm x 5mm rectangular mounting plate, export to /tmp/bm002_base_plate.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 60.0, "height": 40.0, "thickness": 5.0},
+        "bounding_box_mm": [60.0, 40.0, 5.0],
+        "hole_count": 0,
+        "holes": [],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 12000.0,
+        "volume_tolerance_pct": 1.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Baseline solid extrusion without holes or fillets."
+      }
+    },
+    {
+      "id": "BM-003",
+      "number": 3,
+      "title": "Single-Bore Circular Spacer Plate",
+      "part_family": "mounting_plate",
+      "complexity": "simple",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a circular plate 50mm diameter, 6mm thickness, with a 16mm center hole, export to /tmp/bm003_circular_spacer.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "circle",
+        "dimensions_mm": {"diameter": 50.0, "thickness": 6.0},
+        "bounding_box_mm": [50.0, 50.0, 6.0],
+        "hole_count": 1,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 16.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 10574.6,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Annular circular spacer; true cylinder minus 16mm center bore."
+      }
+    },
+    {
+      "id": "BM-004",
+      "number": 4,
+      "title": "Reinforced NEMA 17 Mount Plate (6mm, STL)",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 42.3mm NEMA 17 mount plate with 6mm thickness, 22mm center hole, and 4x M3 holes spaced 31mm apart with 2.5mm fillets, export to /tmp/bm004_nema17_thick.stl",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 42.3, "height": 42.3, "thickness": 6.0},
+        "bounding_box_mm": [42.3, 42.3, 6.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 22.0, "depth": "through"},
+          {"position_mm": [-15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, 15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-15.5, 15.5], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 2.5,
+        "expected_volume_mm3": 8285.3,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Thicker 3D-printable NEMA 17 plate exported as high-refinement STL."
+      }
+    },
+    {
+      "id": "BM-005",
+      "number": 5,
+      "title": "NEMA 23 Standard Stepper Motor Mount Plate",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 57.1mm NEMA 23 motor mount plate with 5mm thickness, 38.1mm center pilot hole, 4x 5mm mounting holes spaced 47.1mm apart, and 3mm corner fillets, export to /tmp/bm005_nema23.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 57.1, "height": 57.1, "thickness": 5.0},
+        "bounding_box_mm": [57.1, 57.1, 5.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 38.1, "depth": "through"},
+          {"position_mm": [-23.55, -23.55], "diameter_mm": 5.0, "depth": "through"},
+          {"position_mm": [23.55, -23.55], "diameter_mm": 5.0, "depth": "through"},
+          {"position_mm": [23.55, 23.55], "diameter_mm": 5.0, "depth": "through"},
+          {"position_mm": [-23.55, 23.55], "diameter_mm": 5.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 3.0,
+        "expected_volume_mm3": 10208.89,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Standard NEMA 23 motor mount flange with 38.1mm register bore."
+      }
+    },
+    {
+      "id": "BM-006",
+      "number": 6,
+      "title": "Embedded Controller Rectangular Carrier Plate",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create an 85mm x 56mm x 3mm rectangular mounting plate with 4x M3 holes spaced 49mm apart and 2mm fillets, export to /tmp/bm006_rpi_carrier.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 85.0, "height": 56.0, "thickness": 3.0},
+        "bounding_box_mm": [85.0, 56.0, 3.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [-24.5, -24.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [24.5, -24.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [24.5, 24.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-24.5, 24.5], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 14195.18,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Raspberry Pi footprint (85mm x 56mm) symmetric mounting carrier plate."
+      }
+    },
+    {
+      "id": "BM-007",
+      "number": 7,
+      "title": "Circular Shaft Flange with 4-Bolt PCD Pattern",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 4x hole 56mm PCD circular flange with 80mm diameter, 8mm thickness, a 25mm center hole, and 1.5mm fillets, export to /tmp/bm007_shaft_flange.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "circle",
+        "dimensions_mm": {"diameter": 80.0, "thickness": 8.0},
+        "bounding_box_mm": [80.0, 80.0, 8.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 25.0, "depth": "through"},
+          {"position_mm": [28.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [0.0, 28.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-28.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [0.0, -28.0], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 1.5,
+        "expected_volume_mm3": 36059.2,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Circular flange with center bore and 4-bolt pitch circle pattern."
+      }
+    },
+    {
+      "id": "BM-008",
+      "number": 8,
+      "title": "6-Bolt Circular Encoder Mounting Flange",
+      "part_family": "mounting_plate",
+      "complexity": "complex",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a 6x hole 72mm pitch circle circular flange with 100mm diameter, 6mm thickness, and a 30mm center hole, export to /tmp/bm008_encoder_flange.stl",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "circle",
+        "dimensions_mm": {"diameter": 100.0, "thickness": 6.0},
+        "bounding_box_mm": [100.0, 100.0, 6.0],
+        "hole_count": 7,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 30.0, "depth": "through"},
+          {"position_mm": [36.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [18.0, 31.18], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-18.0, 31.18], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-36.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-18.0, -31.18], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [18.0, -31.18], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 42628.27,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Rotary encoder adapter flange with 6-hole hexagonal pitch circle."
+      }
+    },
+    {
+      "id": "BM-009",
+      "number": 9,
+      "title": "Compact Square Sensor Adapter Plate",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 50mm x 50mm x 4mm rectangular plate with a 12mm center hole, 4x M4 holes spaced 36mm apart, and 3mm fillets, export to /tmp/bm009_sensor_adapter.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 50.0, "height": 50.0, "thickness": 4.0},
+        "bounding_box_mm": [50.0, 50.0, 4.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 12.0, "depth": "through"},
+          {"position_mm": [-18.0, -18.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [18.0, -18.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [18.0, 18.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [-18.0, 18.0], "diameter_mm": 4.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 3.0,
+        "expected_volume_mm3": 9346.55,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "LiDAR/optical sensor adapter plate with M4 corner mounting pattern."
+      }
+    },
+    {
+      "id": "BM-010",
+      "number": 10,
+      "title": "Heavy-Duty 8-Bolt Coupling Flange (F3D)",
+      "part_family": "mounting_plate",
+      "complexity": "complex",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create an 8x hole 90mm pitch circle circular flange with 120mm diameter, 10mm thickness, and a 40mm center hole, export to /tmp/bm010_coupling_flange.f3d",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "circle",
+        "dimensions_mm": {"diameter": 120.0, "thickness": 10.0},
+        "bounding_box_mm": [120.0, 120.0, 10.0],
+        "hole_count": 9,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 40.0, "depth": "through"},
+          {"position_mm": [45.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [31.82, 31.82], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [0.0, 45.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-31.82, 31.82], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-45.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-31.82, -31.82], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [0.0, -45.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [31.82, -31.82], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 99965.48,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "f3d",
+        "should_succeed": true,
+        "notes": "Heavy-duty 8-bolt flange exported as native Fusion archive (.f3d)."
+      }
+    },
+    {
+      "id": "BM-011",
+      "number": 11,
+      "title": "Standard 90-Degree L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "simple",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 90-degree L-bracket with 50mm vertical leg, 50mm horizontal leg, 30mm width, 4mm wall thickness, and 2mm corner fillets, export to /tmp/bm011_lbracket_std.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 50.0, "leg2": 50.0, "width": 30.0, "thickness": 4.0},
+        "bounding_box_mm": [50.0, 30.0, 50.0],
+        "hole_count": 0,
+        "holes": [],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 11520.0,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 part family (L-bracket): matches canned_responses.get_default_lbracket_mock() bounding box."
+      }
+    },
+    {
+      "id": "BM-012",
+      "number": 12,
+      "title": "NEMA 17 L-Shaped Motor Mount Bracket",
+      "part_family": "l_bracket",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 90-degree NEMA 17 L-bracket with 60mm vertical leg, 50mm base leg, 45mm width, 5mm thickness, 22mm pilot hole plus 4x M3 holes spaced 31mm apart on vertical face, 2x M4 base mounting holes, and 2mm fillets, export to /tmp/bm012_nema17_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 60.0, "leg2": 50.0, "width": 45.0, "thickness": 5.0},
+        "bounding_box_mm": [50.0, 45.0, 60.0],
+        "hole_count": 7,
+        "holes": [
+          {"position_mm": [0.0, 32.0], "diameter_mm": 22.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-15.5, 16.5], "diameter_mm": 3.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [15.5, 16.5], "diameter_mm": 3.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [15.5, 47.5], "diameter_mm": 3.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-15.5, 47.5], "diameter_mm": 3.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-12.0, 30.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [12.0, 30.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 21457.31,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 multi-face L-bracket with NEMA 17 faceplate pattern."
+      }
+    },
+    {
+      "id": "BM-013",
+      "number": 13,
+      "title": "4-Hole Structural Corner L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 90-degree corner L-bracket with 70mm x 70mm legs, 40mm width, 6mm thickness, 2x M5 mounting holes per leg, and 3mm exterior corner fillets, export to /tmp/bm013_corner_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 70.0, "leg2": 70.0, "width": 40.0, "thickness": 6.0},
+        "bounding_box_mm": [70.0, 40.0, 70.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [-10.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [10.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-10.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [10.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 3.0,
+        "expected_volume_mm3": 31688.76,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 structural frame corner bracket for 4040 aluminum extrusion."
+      }
+    },
+    {
+      "id": "BM-014",
+      "number": 14,
+      "title": "Gusseted Heavy-Duty L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a gusseted 90-degree L-bracket with 80mm vertical leg, 60mm base leg, 50mm width, 6mm wall thickness, a 40mm x 40mm x 6mm triangular stiffening gusset, 4x M6 bolt holes, and 2.5mm fillets, export to /tmp/bm014_gusset_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 80.0, "leg2": 60.0, "width": 50.0, "thickness": 6.0},
+        "bounding_box_mm": [60.0, 50.0, 80.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [-14.0, 55.0], "diameter_mm": 6.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [14.0, 55.0], "diameter_mm": 6.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-14.0, 42.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [14.0, 42.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 2.5,
+        "expected_volume_mm3": 44321.42,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 gusseted L-bracket requiring join extrusion for triangular rib."
+      }
+    },
+    {
+      "id": "BM-015",
+      "number": 15,
+      "title": "Asymmetric Sensor Mount L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create an asymmetric 90-degree L-bracket with 45mm vertical leg, 75mm horizontal leg, 35mm width, 4mm thickness, a 12mm cable pass-through hole on the vertical leg, 3x M4 holes on the horizontal base, and 2mm fillets, export to /tmp/bm015_asymmetric_lbracket.stl",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 45.0, "leg2": 75.0, "width": 35.0, "thickness": 4.0},
+        "bounding_box_mm": [75.0, 35.0, 45.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [0.0, 24.0], "diameter_mm": 12.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-9.0, 40.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [9.0, 40.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [0.0, 60.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 15636.81,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Phase 5 asymmetric L-bracket with cable gland bore and 3-point base mount."
+      }
+    }
+  ]
+}
