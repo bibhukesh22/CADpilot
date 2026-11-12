@@ -1,0 +1,429 @@
+{
+  "version": "1.0.0",
+  "batch": "16-30",
+  "description": "CADPilot Benchmark Prompts 16-30: L-brackets (part 2), cylindrical standoffs/spacers, high-bolt flanges, and self-correction/infeasible stress cases.",
+  "prompts": [
+    {
+      "id": "BM-016",
+      "number": 16,
+      "title": "Slotted Adjustment 90-Degree L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 90-degree adjustment L-bracket with 65mm vertical leg, 55mm horizontal leg, 35mm width, 5mm wall thickness, 2x M5 holes on the vertical face, 2x M5 holes on the base face, and 2mm corner fillets, export to /tmp/bm016_slotted_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 65.0, "leg2": 55.0, "width": 35.0, "thickness": 5.0},
+        "bounding_box_mm": [55.0, 35.0, 65.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [-9.0, 40.0], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [9.0, 40.0], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-9.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [9.0, 35.0], "diameter_mm": 5.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 19732.3,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 adjustable frame L-bracket with symmetric M5 hole pairs."
+      }
+    },
+    {
+      "id": "BM-017",
+      "number": 17,
+      "title": "Optical Limit-Switch Miniature L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a miniature 90-degree limit-switch L-bracket with 30mm vertical leg, 25mm base leg, 20mm width, 3mm thickness, 2x 2.5mm switch mounting holes on the vertical leg, 1x 4mm base mounting hole, and 1.5mm corner fillets, export to /tmp/bm017_limit_switch_bracket.stl",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 30.0, "leg2": 25.0, "width": 20.0, "thickness": 3.0},
+        "bounding_box_mm": [25.0, 20.0, 30.0],
+        "hole_count": 3,
+        "holes": [
+          {"position_mm": [-4.75, 18.0], "diameter_mm": 2.5, "depth": "through", "face": "vertical"},
+          {"position_mm": [4.75, 18.0], "diameter_mm": 2.5, "depth": "through", "face": "vertical"},
+          {"position_mm": [0.0, 15.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 1.5,
+        "expected_volume_mm3": 3052.85,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Phase 5 compact endstop switch bracket for 3D printer axis rails."
+      }
+    },
+    {
+      "id": "BM-018",
+      "number": 18,
+      "title": "Dual-Gusset Power Supply L-Bracket",
+      "part_family": "l_bracket",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a dual-gusset 90-degree power supply L-bracket with 90mm vertical leg, 70mm base leg, 60mm width, 5mm thickness, two 35mm x 35mm x 5mm side triangular gussets, 6x M4 mounting holes, and 2mm exterior fillets, export to /tmp/bm018_psu_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 90.0, "leg2": 70.0, "width": 60.0, "thickness": 5.0},
+        "bounding_box_mm": [70.0, 60.0, 90.0],
+        "hole_count": 6,
+        "holes": [
+          {"position_mm": [-16.0, 35.0], "diameter_mm": 4.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [16.0, 35.0], "diameter_mm": 4.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-16.0, 70.0], "diameter_mm": 4.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [16.0, 70.0], "diameter_mm": 4.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-16.0, 48.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [16.0, 48.0], "diameter_mm": 4.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 52248.01,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 heavy PSU mounting bracket with dual stiffening ribs."
+      }
+    },
+    {
+      "id": "BM-019",
+      "number": 19,
+      "title": "NEMA 23 L-Shaped Motor Mount Bracket",
+      "part_family": "l_bracket",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 90-degree NEMA 23 L-bracket with 80mm vertical leg, 70mm base leg, 65mm width, 6mm thickness, 38.1mm center pilot hole and 4x M5 holes spaced 47.1mm apart on the vertical face, 4x M6 base holes, and 3mm fillets, export to /tmp/bm019_nema23_lbracket.step",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 80.0, "leg2": 70.0, "width": 65.0, "thickness": 6.0},
+        "bounding_box_mm": [70.0, 65.0, 80.0],
+        "hole_count": 9,
+        "holes": [
+          {"position_mm": [0.0, 42.0], "diameter_mm": 38.1, "depth": "through", "face": "vertical"},
+          {"position_mm": [-23.55, 18.45], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [23.55, 18.45], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [23.55, 65.55], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-23.55, 65.55], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [-20.0, 25.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [20.0, 25.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [-20.0, 52.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"},
+          {"position_mm": [20.0, 52.0], "diameter_mm": 6.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 3.0,
+        "expected_volume_mm3": 48169.63,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 high-torque NEMA 23 L-bracket motor mount."
+      }
+    },
+    {
+      "id": "BM-020",
+      "number": 20,
+      "title": "2020 Aluminum Extrusion Gusseted Corner Bracket",
+      "part_family": "l_bracket",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 2020 extrusion corner L-bracket with 20mm x 20mm legs, 18mm width, 3mm thickness, dual 10mm x 10mm x 3mm side gussets, 1x M5 hole per leg, and 1mm corner fillets, export to /tmp/bm020_2020_corner.stl",
+      "expected_outcome": {
+        "part_type": "l_bracket",
+        "shape_type": "l_profile",
+        "dimensions_mm": {"leg1": 20.0, "leg2": 20.0, "width": 18.0, "thickness": 3.0},
+        "bounding_box_mm": [20.0, 18.0, 20.0],
+        "hole_count": 2,
+        "holes": [
+          {"position_mm": [0.0, 11.5], "diameter_mm": 5.0, "depth": "through", "face": "vertical"},
+          {"position_mm": [0.0, 11.5], "diameter_mm": 5.0, "depth": "through", "face": "horizontal"}
+        ],
+        "fillet_radius_mm": 1.0,
+        "expected_volume_mm3": 2180.19,
+        "volume_tolerance_pct": 3.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Phase 5 standard 2020 T-slot corner gusset bracket."
+      }
+    },
+    {
+      "id": "BM-021",
+      "number": 21,
+      "title": "Plain Cylindrical M3 Spacer Standoff",
+      "part_family": "standoff",
+      "complexity": "simple",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a cylindrical M3 spacer standoff with 8mm outer diameter, 15mm height, and a 3.2mm through bore, export to /tmp/bm021_m3_standoff.step",
+      "expected_outcome": {
+        "part_type": "standoff",
+        "shape_type": "circle",
+        "dimensions_mm": {"outer_diameter": 8.0, "height": 15.0, "bore_diameter": 3.2},
+        "bounding_box_mm": [8.0, 8.0, 15.0],
+        "hole_count": 1,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 3.2, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 633.35,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 cylindrical unthreaded M3 clearance standoff."
+      }
+    },
+    {
+      "id": "BM-022",
+      "number": 22,
+      "title": "Heavy-Duty M6 Mechanical Spacer",
+      "part_family": "standoff",
+      "complexity": "simple",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a cylindrical M6 mechanical spacer with 14mm outer diameter, 25mm length, and a 6.2mm through center bore, export to /tmp/bm022_m6_spacer.stl",
+      "expected_outcome": {
+        "part_type": "standoff",
+        "shape_type": "circle",
+        "dimensions_mm": {"outer_diameter": 14.0, "height": 25.0, "bore_diameter": 6.2},
+        "bounding_box_mm": [14.0, 14.0, 25.0],
+        "hole_count": 1,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 6.2, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 3093.68,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Phase 5 M6 structural shaft/gantry spacer sleeve."
+      }
+    },
+    {
+      "id": "BM-023",
+      "number": 23,
+      "title": "Stepped Flange Collar Standoff",
+      "part_family": "standoff",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a stepped cylindrical standoff with an 18mm diameter base collar (4mm tall), a 12mm diameter upper boss (16mm tall), and a 5.2mm concentric through bore, export to /tmp/bm023_stepped_standoff.step",
+      "expected_outcome": {
+        "part_type": "standoff",
+        "shape_type": "circle",
+        "dimensions_mm": {"base_diameter": 18.0, "boss_diameter": 12.0, "total_height": 20.0},
+        "bounding_box_mm": [18.0, 18.0, 20.0],
+        "hole_count": 1,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 5.2, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 2402.7,
+        "volume_tolerance_pct": 2.5,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 two-stage stepped shoulder spacer requiring join extrusion."
+      }
+    },
+    {
+      "id": "BM-024",
+      "number": 24,
+      "title": "Blind-Bore M4 PCB Mounting Standoff",
+      "part_family": "standoff",
+      "complexity": "medium",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a cylindrical M4 PCB standoff with 10mm outer diameter, 20mm height, and a 3.3mm blind tap-drill bore 12mm deep from the top face, export to /tmp/bm024_blind_standoff.step",
+      "expected_outcome": {
+        "part_type": "standoff",
+        "shape_type": "circle",
+        "dimensions_mm": {"outer_diameter": 10.0, "height": 20.0, "bore_diameter": 3.3, "bore_depth": 12.0},
+        "bounding_box_mm": [10.0, 10.0, 20.0],
+        "hole_count": 1,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 3.3, "depth": 12.0}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 1468.16,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 blind-depth bore standoff testing non-through cut_hole depth."
+      }
+    },
+    {
+      "id": "BM-025",
+      "number": 25,
+      "title": "3-Bolt Flanged Panel Mount Standoff",
+      "part_family": "standoff",
+      "complexity": "complex",
+      "execution_readiness": "phase5_pending",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a flanged panel-mount standoff with a 32mm circular base (4mm thick) containing 3x M3 holes on a 24mm PCD, plus a 12mm central boss extending to 20mm total height with a 4.2mm through bore, export to /tmp/bm025_flanged_standoff.step",
+      "expected_outcome": {
+        "part_type": "standoff",
+        "shape_type": "circle",
+        "dimensions_mm": {"base_diameter": 32.0, "boss_diameter": 12.0, "total_height": 20.0},
+        "bounding_box_mm": [32.0, 32.0, 20.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 4.2, "depth": "through"},
+          {"position_mm": [12.0, 0.0], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-6.0, 10.39], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-6.0, -10.39], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 4664.64,
+        "volume_tolerance_pct": 2.5,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Phase 5 multi-feature flanged standoff with 3-bolt mounting circle."
+      }
+    },
+    {
+      "id": "BM-026",
+      "number": 26,
+      "title": "Large Rectangular Enclosure Backplate",
+      "part_family": "mounting_plate",
+      "complexity": "simple",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 150mm x 100mm x 5mm rectangular mounting plate with 4x M4 holes spaced 80mm apart and 4mm fillets, export to /tmp/bm026_enclosure_backplate.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 150.0, "height": 100.0, "thickness": 5.0},
+        "bounding_box_mm": [150.0, 100.0, 5.0],
+        "hole_count": 4,
+        "holes": [
+          {"position_mm": [-40.0, -40.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [40.0, -40.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [40.0, 40.0], "diameter_mm": 4.0, "depth": "through"},
+          {"position_mm": [-40.0, 40.0], "diameter_mm": 4.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 4.0,
+        "expected_volume_mm3": 74748.67,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "Large DIN/control box inner mounting backplate."
+      }
+    },
+    {
+      "id": "BM-027",
+      "number": 27,
+      "title": "10-Bolt Industrial Pump Flange",
+      "part_family": "mounting_plate",
+      "complexity": "complex",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "inspect_brep", "export_cad"],
+      "prompt": "Create a 10x hole 110mm pitch circle circular flange with 140mm diameter, 12mm thickness, and a 50mm center hole, export to /tmp/bm027_pump_flange.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "circle",
+        "dimensions_mm": {"diameter": 140.0, "thickness": 12.0},
+        "bounding_box_mm": [140.0, 140.0, 12.0],
+        "hole_count": 11,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 50.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 160315.48,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "notes": "High-hole-count 10-bolt PCD industrial flange (11 total bores)."
+      }
+    },
+    {
+      "id": "BM-028",
+      "number": 28,
+      "title": "Compact High-Precision Servo Adapter Plate",
+      "part_family": "mounting_plate",
+      "complexity": "medium",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 36mm x 36mm x 3mm rectangular plate with a 16mm center hole, 4x M2.5 holes spaced 26mm apart, and 1.5mm fillets, export to /tmp/bm028_servo_adapter.stl",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 36.0, "height": 36.0, "thickness": 3.0},
+        "bounding_box_mm": [36.0, 36.0, 3.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 16.0, "depth": "through"},
+          {"position_mm": [-13.0, -13.0], "diameter_mm": 2.5, "depth": "through"},
+          {"position_mm": [13.0, -13.0], "diameter_mm": 2.5, "depth": "through"},
+          {"position_mm": [13.0, 13.0], "diameter_mm": 2.5, "depth": "through"},
+          {"position_mm": [-13.0, 13.0], "diameter_mm": 2.5, "depth": "through"}
+        ],
+        "fillet_radius_mm": 1.5,
+        "expected_volume_mm3": 3225.91,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "stl",
+        "should_succeed": true,
+        "notes": "Compact thin-wall 3mm servo mount testing tight corner clearances."
+      }
+    },
+    {
+      "id": "BM-029",
+      "number": 29,
+      "title": "Self-Correction Recovery: Oversized Fillet on NEMA 17",
+      "part_family": "mounting_plate",
+      "complexity": "complex",
+      "execution_readiness": "ready",
+      "operations": ["reset_design", "create_sketch", "extrude_profile", "cut_hole", "apply_fillet", "inspect_brep", "export_cad"],
+      "prompt": "Create a 42.3mm NEMA 17 mount plate with 4mm thickness, 22mm center hole, 4x M3 holes spaced 31mm apart, and 12mm fillets, export to /tmp/bm029_nema17_recovered.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 42.3, "height": 42.3, "thickness": 4.0},
+        "bounding_box_mm": [42.3, 42.3, 4.0],
+        "hole_count": 5,
+        "holes": [
+          {"position_mm": [0.0, 0.0], "diameter_mm": 22.0, "depth": "through"},
+          {"position_mm": [-15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, -15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [15.5, 15.5], "diameter_mm": 3.0, "depth": "through"},
+          {"position_mm": [-15.5, 15.5], "diameter_mm": 3.0, "depth": "through"}
+        ],
+        "fillet_radius_mm": 2.0,
+        "expected_volume_mm3": 5523.55,
+        "volume_tolerance_pct": 2.0,
+        "export_format": "step",
+        "should_succeed": true,
+        "expected_retries": 1,
+        "notes": "Deliberately requests 12mm fillet on 4mm plate; agent must detect feasibility violation, self-correct fillet to <= 2.0mm, and complete."
+      }
+    },
+    {
+      "id": "BM-030",
+      "number": 30,
+      "title": "Adversarial Infeasible Geometry: Oversized Center Bore",
+      "part_family": "mounting_plate",
+      "complexity": "complex",
+      "execution_readiness": "ready",
+      "operations": ["feasibility_checker", "reflection"],
+      "prompt": "Create a 30mm x 30mm x 4mm rectangular plate with a 40mm center hole, export to /tmp/bm030_infeasible.step",
+      "expected_outcome": {
+        "part_type": "mounting_plate",
+        "shape_type": "rectangle",
+        "dimensions_mm": {"width": 30.0, "height": 30.0, "thickness": 4.0},
+        "bounding_box_mm": [30.0, 30.0, 4.0],
+        "hole_count": 0,
+        "holes": [],
+        "fillet_radius_mm": null,
+        "expected_volume_mm3": 0.0,
+        "volume_tolerance_pct": 0.0,
+        "export_format": "step",
+        "should_succeed": false,
+        "notes": "Impossible geometry: 40mm bore exceeds 30mm plate width/height; agent must reject cleanly during feasibility/reflection."
+      }
+    }
+  ]
+}
